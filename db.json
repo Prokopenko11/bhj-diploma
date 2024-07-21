@@ -72,11 +72,6 @@
       "name": "наличка",
       "user_id": "1roo61jiolybirphi",
       "id": "1roo61eo8lyblu5v3"
-    },
-    {
-      "name": "сбер",
-      "user_id": "1roo61hgwly95cq04",
-      "id": "1roo61a2slyof7ftr"
     }
   ],
   "transactions": [
@@ -630,6 +625,22 @@
       "sum": 100000000,
       "user_id": "1roo61hgwly95cq04",
       "created_at": "2024-07-16T13:19:39.013Z"
+    },
+    {
+      "id": "1roo612twlyw0pg6h",
+      "type": "income",
+      "name": " зп",
+      "sum": 10000,
+      "user_id": "1roo61hgwly95cq04",
+      "created_at": "2024-07-21T20:35:50.440Z"
+    },
+    {
+      "id": "1roo61cbclyw10fld",
+      "type": "income",
+      "name": "зп",
+      "sum": 10000,
+      "user_id": "1roo61hgwly95cq04",
+      "created_at": "2024-07-21T20:44:22.896Z"
     }
   ]
 }

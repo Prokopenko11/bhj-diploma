@@ -16,11 +16,14 @@ class TransactionsPage {
 
   registerEvents() {
     this.element.addEventListener('click', (event) => {
-      if (event.target.classList.contains('remove-account')) {
+      const removeAccountBtn = event.target.closest('.remove-account');
+      if (removeAccountBtn) {
         this.removeAccount();
       }
-      if (event.target.classList.contains('transaction__remove')) {
-        const id = event.target.dataset.id;
+
+      const removeTransactionBtn = event.target.closest('.transaction__remove');
+      if (removeTransactionBtn) {
+        const id = removeTransactionBtn.dataset.id;
         this.removeTransaction(id);
       }
     });
@@ -44,7 +47,7 @@ class TransactionsPage {
 
   removeTransaction( id ) {
     if (confirm('Вы действительно хотите удалить эту транзакцию?')) {
-      Transaction.remove(id, (err, response) => {
+      Transaction.remove({id}, (err, response) => {
         if (response && response.success) {
           App.update();
         } else {
@@ -134,12 +137,12 @@ class TransactionsPage {
     `;
   }
 
-  renderTransactions(data){
+  renderTransactions(data) {
     const content = this.element.querySelector('.content');
-    content.innerHTML = '';
-    data.forEach(item => {
-      content.insertAdjacentHTML('beforeend', this.getTransactionHTML(item));
-    });
+    const transactionsHTML = data.reduce((acc, item) => {
+      return acc + this.getTransactionHTML(item);
+    }, '');
+    content.innerHTML = transactionsHTML;
     console.log('Transactions rendered:', data);
   }
 }

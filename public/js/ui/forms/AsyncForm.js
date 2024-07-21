@@ -1,11 +1,9 @@
 class AsyncForm {
   constructor(element) {
-    if (element) {
-      this.element = element;
-    } else {
+    if (!element) {
       throw new Error('Элемент не был передан');
     }
-
+    this.element = element;
     this.registerEvents();
   }
 
@@ -17,14 +15,8 @@ class AsyncForm {
   }
 
   getData() {
-    const inputs = this.element.querySelectorAll('input');
-    const data = {};
-    inputs.forEach(input => {
-        if (input.name) {
-            data[input.name] = input.value;
-        }
-    });
-    return data;
+    const formData = new FormData(this.element);
+    return Object.fromEntries(formData.entries());
   }
 
   onSubmit(options){

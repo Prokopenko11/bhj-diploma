@@ -1,11 +1,10 @@
 class Modal {
   constructor(element){
-    if (element) {
-      this.element = element;
-    } else {
+    if (!element) {
       throw new Error('Элемент не был передан');
     }
 
+    this.element = element;
     this.registerEvents();
   }
 
